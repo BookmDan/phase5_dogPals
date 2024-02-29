@@ -1,2 +1,2 @@
-# Project Name Here
-Fill out your project details here in your README.md
+# dogPals
+You can set up appointment for dog-sitting so you can have your you time.
