@@ -3,7 +3,6 @@ from marshmallow import Schema, fields
 from sqlalchemy.orm import validates
 
 from config import db
-from models import User  # Assuming models.py contains the User model
 
 class Sitter(db.Model, SerializerMixin):
     __tablename__ = "sitters"
@@ -13,8 +12,8 @@ class Sitter(db.Model, SerializerMixin):
     availability = db.Column(db.String)
 
     # 1-1 relationship between user and sitter
-    sitter = db.relationship('Sitter', backref='user', uselist=False) 
-
+    # sitter = db.relationship('Sitter', backref='user', uselist=False) 
+    user = db.relationship('User', backref='sitter', uselist=False)
     serialize_rules = ('-user_id', )
 
     @validates("availability")

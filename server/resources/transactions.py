@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flask_restful import Resource
 from config import api, db
-from models import Transaction, TransactionSchema  
+from models.models import Transaction, TransactionSchema  
 
 transaction_schema = TransactionSchema()
 

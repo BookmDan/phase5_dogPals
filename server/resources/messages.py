@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flask_restful import Resource
 from config import api, db
-from models import Message, MessageSchema  
+from models.models import Message, MessageSchema  
 
 message_schema = MessageSchema()
 
