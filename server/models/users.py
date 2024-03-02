@@ -3,7 +3,6 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import Schema, fields
 from sqlalchemy.orm import validates
 
-
 from config import db, bcrypt
 
 class User(db.Model, SerializerMixin):
@@ -15,22 +14,20 @@ class User(db.Model, SerializerMixin):
   phone_number = db.Column(db.String)
   _password_hash = db.Column(db.String)
   
-  @property
+  @hybrid_property
   def password_hash(self):
-    return self._password_hash
-    # raise Exception("You cannot view the password hash.")
+    raise Exception("You cannot view the password hash.")
 
   @password_hash.setter
   def password_hash(self, password):
-    if len(password) < 8:
-      raise ValueError("Passwords must be 8 or more characters")
+    if len(password) < 4:
+      raise ValueError("Passwords must be 4 or more characters")
     self._password_hash = bcrypt.generate_password_hash(password.encode('utf-8'))
 
   def check_password(self, password):
-        return bcrypt.check_password_hash(self._password_hash, password)
+    return bcrypt.check_password_hash(self._password_hash, password)
   
   serialize_rules = ('-_password_hash', )
-  #  '-race_signups.user', '-race_signups.race_event','-credit_card_infos.user', '-race_events', 
 
   @validates("email")
   def check_email(self, key, email):
