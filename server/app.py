@@ -9,5 +9,12 @@ from models.models import *
 def index(id=0):
   return render_template('index.html')
 
+api.add_resource(CheckSession, '/api/check-session')
+api.add_resource(Login, '/api/login')
+api.add_resource(Logout, '/api/logout')
+api.add_resource(Signup, '/api/signup')
+
+
+
 if __name__ == "__main__":
   app.run(port=5555, debug=True)
