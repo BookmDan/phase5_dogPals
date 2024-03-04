@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
-from config import api, db
+from config import db
 from models.models import Message, MessageSchema  
 
 message_schema = MessageSchema()
@@ -43,5 +43,4 @@ class MessageById(Resource):
       return jsonify({"message": f"Message with ID {id} deleted successfully"}), 200
     return jsonify({"message": f"Message with ID {id} not found"}), 404
 
-api.add_resource(MessagesResource, '/api/messages')
-api.add_resource(MessageById, '/api/message/<int:id>')
+

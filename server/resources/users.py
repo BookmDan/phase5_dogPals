@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flask_restful import Resource
 from models.models import db, User, UserSchema 
-from config import api, db
+from config import db
 
 user_schema = UserSchema()
 
@@ -43,6 +43,3 @@ class UserById(Resource):
       return jsonify({"message": f"User with ID {id} deleted successfully"}), 200
     return jsonify({"message": f"User with ID {id} not found"}), 404
 
-# Adding the resources to your API
-api.add_resource(UsersResource, '/api/users')
-api.add_resource(UserById, '/api/user/<int:id>')

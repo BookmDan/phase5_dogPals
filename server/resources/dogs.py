@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
-from config import db, api
+from config import db 
 from models.models import Dog, DogSchema  
 
 dog_schema = DogSchema()
@@ -43,6 +43,3 @@ class DogById(Resource):
             return jsonify({"message": f"Dog with ID {id} deleted successfully"}), 200
         return jsonify({"message": f"Dog with ID {id} not found"}), 404
 
-# Adding the resources to your API
-api.add_resource(DogsResource, '/api/dogs')
-api.add_resource(DogById, '/api/dog/<int:id>')

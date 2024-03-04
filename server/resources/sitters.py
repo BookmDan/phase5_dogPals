@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
-from config import api, db
+from config import db
 from models.models import Sitter, SitterSchema  
 
 sitter_schema = SitterSchema()
@@ -43,6 +43,4 @@ class SitterById(Resource):
       return jsonify({"message": f"Sitter with ID {id} deleted successfully"}), 200
     return jsonify({"message": f"Sitter with ID {id} not found"}), 404
 
-# Adding the resources to your API
-api.add_resource(SittersResource, '/api/sitters')
-api.add_resource(SitterById, '/api/sitter/<int:id>')
+

@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
-from config import api, db
+from config import db
 from models.models import Transaction, TransactionSchema  
 
 transaction_schema = TransactionSchema()
@@ -43,5 +43,4 @@ class TransactionById(Resource):
       return jsonify({"message": f"Transaction with ID {id} deleted successfully"}), 200
     return jsonify({"message": f"Transaction with ID {id} not found"}), 404
 
-api.add_resource(TransactionsResource, '/api/transactions')
-api.add_resource(TransactionById, '/api/transaction/<int:id>')
+
