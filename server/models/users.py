@@ -8,10 +8,8 @@ from config import db, bcrypt
 class User(db.Model, SerializerMixin):
   __tablename__ = "users"
   id = db.Column(db.Integer, primary_key=True)
-  first_name = db.Column(db.String, nullable=False)
-  last_name = db.Column(db.String, nullable=False)
+  name = db.Column(db.String, nullable=False)
   email = db.Column(db.String, unique=True, nullable=False)
-  phone_number = db.Column(db.String)
   _password_hash = db.Column(db.String)
   
   @hybrid_property
@@ -40,9 +38,7 @@ class User(db.Model, SerializerMixin):
   
 class UserSchema(Schema):
   id = fields.Int()
-  first_name = fields.Str(required=True)
-  last_name = fields.Str(required=True)
+  name = fields.Str(required=True)
   email = fields.Email(required=True)
-  phone_number = fields.Str()
   password = db.Column(db.String)
  

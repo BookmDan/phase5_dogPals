@@ -9,9 +9,9 @@ if __name__ == "__main__":
     db.session.query(Sitter).delete()
     db.session.query(Transaction).delete()
 
-    user1 = User(first_name="John", last_name="Doe", email="john@example.com")
+    user1 = User(name="John", email="john@example.com")
     user1.password_hash = "password123"
-    user2 = User(first_name="Jane", last_name="Smith", email="jane@example.com")
+    user2 = User(name="Jane",  email="jane@example.com")
     user2.password_hash = "password456"
 
     db.session.add(user1)
