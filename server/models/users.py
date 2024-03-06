@@ -11,7 +11,8 @@ class User(db.Model, SerializerMixin):
   name = db.Column(db.String, nullable=False)
   email = db.Column(db.String, unique=True, nullable=False)
   _password_hash = db.Column(db.String)
-  sitters = db.relationship('Sitter', secondary='user_sitter_association', backref='users')
+  # sitters = db.relationship('Sitter', secondary='user_sitter_association', backref='owners')
+  dog_ownerships = db.relationship('Dog', backref='owner')
 
   @hybrid_property
   def password_hash(self):

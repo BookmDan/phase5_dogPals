@@ -31,7 +31,8 @@ class Dog(db.Model, SerializerMixin):
       raise ValueError("Age must be a non-negative integer")
     return age
 
-
+  serialize_rules = ('-owner_id',)
+  
 class DogSchema(Schema):
   id = fields.Int()
   owner_id = fields.Int(required=True)

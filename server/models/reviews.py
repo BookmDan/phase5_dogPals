@@ -19,6 +19,8 @@ class Review(db.Model, SerializerMixin):
     if not 1 <= rating <= 5:
       raise ValidationError("Rating must be between 1 and 5")
     return rating
+  
+  serialize_rules = ('-user_id', '-sitter_id',)
 
 class ReviewSchema(Schema):
   id = fields.Int()
