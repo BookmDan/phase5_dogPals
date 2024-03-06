@@ -10,10 +10,12 @@ class Sitter(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     bio = db.Column(db.Text)
     availability = db.Column(db.String)
+    users = db.relationship('User', secondary='user_sitter_association', backref='sitters')
 
-    # 1-1 relationship between user and sitter
-    # sitter = db.relationship('Sitter', backref='user', uselist=False) 
-    user = db.relationship('User', backref='sitter', uselist=False)
+user_sitter_association = db.Table('user_sitter_association',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('sitter_id', db.Integer, db.ForeignKey('sitters.id'), primary_key=True)
+
     serialize_rules = ('-user_id', )
 
     @validates("availability")

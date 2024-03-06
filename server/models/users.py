@@ -11,10 +11,11 @@ class User(db.Model, SerializerMixin):
   name = db.Column(db.String, nullable=False)
   email = db.Column(db.String, unique=True, nullable=False)
   _password_hash = db.Column(db.String)
-  
+  sitters = db.relationship('Sitter', secondary='user_sitter_association', backref='users')
+
   @hybrid_property
   def password_hash(self):
-    raise Exception("You cannot view the password hash.")
+    return self._password_hash
 
   @password_hash.setter
   def password_hash(self, password):
