@@ -3,10 +3,12 @@ import PassList from './forms/PassList';
 import AddPassForm from './forms/AddPassForm';
 import PetList from './forms/PetList';
 import { useState, useEffect } from 'react'
+import { useAuth } from '../contexts/authContext'
 
 function Home() {
   const [passes, setPasses] = useState([]);
   const [pets, setPets] = useState([]);
+  const { currentUser } = useAuth()
 
   useEffect(() => {
     const fetchPasses = async () => {
@@ -34,6 +36,8 @@ function Home() {
 
   return (
     <>
+      <div className='text-2xl font-bold pt-14'>Hello       {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.
+      </div>
       <div className="App">
         <h1>My Pet Wallet</h1>
         <AddPassForm onAddPass={handleAddPass} />
