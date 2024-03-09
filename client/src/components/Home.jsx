@@ -1,7 +1,7 @@
-import firebase from './firebase';
-import PassList from './forms/PassList';
-import AddPassForm from './forms/AddPassForm';
-import PetList from './forms/PetList';
+import firebase from '../firebase/firebase';
+// import PassList from './forms/PassList';
+// import AddPassForm from './forms/AddPassForm';
+// import PetList from './forms/PetList';
 import { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/authContext'
 
@@ -11,21 +11,21 @@ function Home() {
   const { currentUser } = useAuth()
 
   useEffect(() => {
-    const fetchPasses = async () => {
-      // Fetch passes from Firebase or your backend
-      const passesSnapshot = await firebase.passes().get();
-      const passesData = passesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setPasses(passesData);
-    };
-    const fetchPets = async () => {
-      // Fetch pets from Firebase or your backend
-      const petsSnapshot = await firebase.pets().get();
-      const petsData = petsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setPets(petsData);
-    };
+    // const fetchPasses = async () => {
+    //   // Fetch passes from Firebase or your backend
+    //   const passesSnapshot = await firebase.passes().get();
+    //   const passesData = passesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    //   setPasses(passesData);
+    // };
+    // const fetchPets = async () => {
+    //   // Fetch pets from Firebase or your backend
+    //   const petsSnapshot = await firebase.pets().get();
+    //   const petsData = petsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    //   setPets(petsData);
+    // };
 
-    fetchPasses();
-    fetchPets();
+    // fetchPasses();
+    // fetchPets();
   }, []);
 
   const handleAddPass = (newPass) => {

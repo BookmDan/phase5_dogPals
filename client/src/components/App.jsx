@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Home from "./Home";
 import Header from "./Header";
-import Login from "./components/auth/login";
-import Register from "./components/auth/register";
-import './App.css'
+import Login from "./authentication/Login";
+import Register from "./authentication/Register";
+import '../index.css'
 import { useRoutes } from 'react-router-dom';
-import { AuthProvider } from "./contexts/authContext";
+import { AuthProvider } from "../contexts/authContext";
 
 function App() {
   const routesArray = [

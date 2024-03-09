@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyAVSv1zjxwcC7e3_R_ccfg0pp8X9CBBcB4",
   authDomain: "dogpals-be115.firebaseapp.com",

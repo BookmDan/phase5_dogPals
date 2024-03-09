@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../contexts/authContext'
-import { doSignOut } from '../../firebase/auth'
+import { useAuth } from '../contexts/authContext/index'
+import { doSignOut } from '../contexts/authContext/auth'
 
 const Header = () => {
   const navigate = useNavigate()
