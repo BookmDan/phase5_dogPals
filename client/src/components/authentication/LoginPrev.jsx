@@ -1,7 +1,7 @@
 import { useState } from "react";
-import LoginForm from "./Login";
-import SignupForm from "./Register";
-import LoginLoading from "./cards-lists-boxes/LoginLoading";
+import {LoginForm} from "./Login";
+import {SignupForm} from "./Register";
+import {LoginLoading} from "./cards-lists-boxes/LoginLoading";
 
 function Login({ onLogin }) {
 

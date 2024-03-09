@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Home from "./Home";
-import Header from "./Header";
-import Login from "./authentication/Login";
-import Register from "./authentication/Register";
+import {Home} from "./Home";
+import {Header} from "./Header";
+import {Login} from "./authentication/Login";
+import {Register} from "./authentication/Register";
 import '../index.css'
 import { useRoutes } from 'react-router-dom';
 import { AuthProvider } from "../contexts/authContext";

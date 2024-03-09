@@ -1,4 +1,4 @@
-import firebase from '../firebase/firebase';
+import {firebase} from '../firebase/firebase';
 // import PassList from './forms/PassList';
 // import AddPassForm from './forms/AddPassForm';
 // import PetList from './forms/PetList';
