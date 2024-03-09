@@ -1,33 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import firebase from './firebase';
+import PassList from './forms/PassList';
+import AddPassForm from './forms/AddPassForm';
+import PetList from './forms/PetList';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [passes, setPasses] = useState([]);
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    const fetchPasses = async () => {
+      // Fetch passes from Firebase or your backend
+      const passesSnapshot = await firebase.passes().get();
+      const passesData = passesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setPasses(passesData);
+    };
+    const fetchPets = async () => {
+      // Fetch pets from Firebase or your backend
+      const petsSnapshot = await firebase.pets().get();
+      const petsData = petsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setPets(petsData);
+    };
+
+    fetchPasses();
+    fetchPets();
+  }, []);
+
+  const handleAddPass = (newPass) => {
+    // Add pass to Firebase or your backend
+    firebase.passes().add(newPass);
+    setPasses([...passes, newPass]);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        <h1>My Pet Wallet</h1>
+        <AddPassForm onAddPass={handleAddPass} />
+        <PassList passes={passes} />
+        <PetList pets={pets} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
