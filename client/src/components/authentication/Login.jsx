@@ -1,22 +1,15 @@
 import { useState} from "react";
-// import { useFormik } from "formik";
-// import * as yup from "yup";
-// import { Form, Button, Col } from "react-bootstrap";
-// import { useNavigate, Link, Navigate } from "react-router-dom";
+import {  Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../../contexts/authContext/auth";
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../../firebase/auth";
 
-
-function Login({ onLogin, setSignupMode, signupMode, setIsLoading }) {
-
+function Login() {
   const { userLoggedIn } = useAuth()
   
   const [email, setEmail] = useState('')
   const [password, setPassword]= useState('')
-  const [isSigningIn, setIsSigningIn]= useState('')
-  const [errorMessage, setErrorMessage]= useState('')
-  // const [errors, setErrors] = useState([])
-  // const navigate = useNavigate()
+  const [isSigningIn, setIsSigningIn]= useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -32,50 +25,10 @@ function Login({ onLogin, setSignupMode, signupMode, setIsLoading }) {
         setIsSigningIn(true)
         doSignInWithGoogle().catch(err => {
           setIsSigningIn(false)
-          console.lerror('Error occured during Google sign-in:', err)
+          console.error('Error occured during Google sign-in:', err)
         })
     }
 }
-  // const handleSignupClick = () => {
-  //     setSignupMode(!signupMode)
-  // }
-
-  // const formSchema = yup.object().shape({
-  //     username: yup.string().required("Please enter a username").max(20, "Username must be 20 characters or fewer"),
-  //     password: yup.string().required("Please enter a password")
-  // })
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //       username: "",
-  //       password: ""
-  //   },
-  //   validationSchema: formSchema,
-  //   validateOnChange: false,
-  //   validateOnBlur: false,
-  //   onSubmit: (values) => {
-  //     setIsLoading(true)
-  //     setErrors([])
-  //     fetch("/api/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(values),
-  //     }).then(r => {
-  //       if (r.ok) {
-  //         r.json().then(user =>onLogin(user))
-  //         navigate('/')    
-  //       } else {
-  //         r.json().then(err => {
-  //           setIsLoading(false)
-  //           console.log(err.errors)
-  //           setErrors(err.errors)
-  //         })
-  //       }
-  //     })
-  //   }
-  // })
 
   return (
     <div>
@@ -155,4 +108,4 @@ function Login({ onLogin, setSignupMode, signupMode, setIsLoading }) {
   )
 }
 
-export default Login
+export default Login;

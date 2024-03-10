@@ -1,11 +1,19 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
+import {getAuth} from "firebase/auth"
 
-import firebaseConfig from './firebaseConfig';
+const firebaseConfig = {
+  apiKey: "AIzaSyAVSv1zjxwcC7e3_R_ccfg0pp8X9CBBcB4",
+  authDomain: "dogpals-be115.firebaseapp.com",
+  projectId: "dogpals-be115",
+  storageBucket: "dogpals-be115.appspot.com",
+  messagingSenderId: "278448206513",
+  appId: "1:278448206513:web:c57a9291ee6d93b856e890",
+  measurementId: "G-TZ38PP9R00"
+};
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export {app, auth}
+ 

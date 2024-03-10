@@ -1,4 +1,4 @@
-import {firebase} from '../firebase/firebase';
+import { firebase } from '../firebase/firebase';
 // import PassList from './forms/PassList';
 // import AddPassForm from './forms/AddPassForm';
 // import PetList from './forms/PetList';
@@ -10,7 +10,7 @@ function Home() {
   const [pets, setPets] = useState([]);
   const { currentUser } = useAuth()
 
-  useEffect(() => {
+  // useEffect(() => {
     // const fetchPasses = async () => {
     //   // Fetch passes from Firebase or your backend
     //   const passesSnapshot = await firebase.passes().get();
@@ -26,26 +26,29 @@ function Home() {
 
     // fetchPasses();
     // fetchPets();
-  }, []);
+  // }, []);
 
-  const handleAddPass = (newPass) => {
-    // Add pass to Firebase or your backend
-    firebase.passes().add(newPass);
-    setPasses([...passes, newPass]);
-  };
+  // const handleAddPass = (newPass) => {
+  //   // Add pass to Firebase or your backend
+  //   firebase.passes().add(newPass);
+  //   setPasses([...passes, newPass]);
+  // };
 
+      // <div className='text-2xl font-bold pt-14'>Hello       {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.
+      // </div>
+      // <div className="App">
+      //   <h1>My Pet Wallet</h1>
+      //   <AddPassForm onAddPass={handleAddPass} />
+      //   <PassList passes={passes} />
+      //   <PetList pets={pets} />
+      // </div>
   return (
     <>
-      <div className='text-2xl font-bold pt-14'>Hello       {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.
-      </div>
-      <div className="App">
-        <h1>My Pet Wallet</h1>
-        <AddPassForm onAddPass={handleAddPass} />
-        <PassList passes={passes} />
-        <PetList pets={pets} />
+      <div>
+        <h2>Race Events</h2>
       </div>
     </>
   )
 }
 
-export default Home
+export default Home;
