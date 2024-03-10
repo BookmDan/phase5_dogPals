@@ -13,30 +13,26 @@ function App() {
     // <div>
     //   <h2>Race Events</h2>
     // </div>
-  return (
     <Router>
       <Routes>
         <Route path="/home" element={<Home /> }/>
       </Routes>
     </Router>
+  return (
+    <AuthProvider>
+      <div className="w-full h-screen flex flex-col">
+        <Router>
+          <Routes>
+            <Route path="/*" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </Router>
+      </div>
+    </AuthProvider>
   );
   
 }
-    // <AuthProvider>
-    //   <div className="w-full h-screen flex flex-col">
-    //     <Router>
-    //       <Routes>
-    //         <Route
-    //           path="/"
-    //           element={<Home /> }
-    //         />
-    //         {/* <Route path="/*" element={<Login />} />
-    //         <Route path="/login" element={<Login />} />
-    //         <Route path="/register" element={<Register />} />
-    //         <Route path="/home" element={<Home />} /> */}
-    //       </Routes>
-    //     </Router>
-    //   </div>
-    // </AuthProvider>
 
 export default App;

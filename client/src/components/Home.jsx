@@ -34,18 +34,15 @@ function Home() {
   //   setPasses([...passes, newPass]);
   // };
 
-      // <div className='text-2xl font-bold pt-14'>Hello       {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.
-      // </div>
-      // <div className="App">
-      //   <h1>My Pet Wallet</h1>
-      //   <AddPassForm onAddPass={handleAddPass} />
-      //   <PassList passes={passes} />
-      //   <PetList pets={pets} />
-      // </div>
   return (
     <>
-      <div>
-        <h2>Race Events</h2>
+      <div className='text-2xl font-bold pt-14'>Hello       {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.
+      </div>
+      <div className="App">
+        <h1>My Pet Wallet</h1>
+        <AddPassForm onAddPass={handleAddPass} />
+        <PassList passes={passes} />
+        <PetList pets={pets} />
       </div>
     </>
   )
